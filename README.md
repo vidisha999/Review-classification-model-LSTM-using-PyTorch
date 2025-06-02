@@ -10,10 +10,22 @@ Due to the vainishing gradient problem during the backpropogation, the tradition
 The primary goal of this project is to build an automated pipeline that preprocess textual data, builds a predictive model using pyTorch module, evaluate and validate the performance of the model. This workflow allows for batch processing of extensive text datasets using PyTorch's module, and it evaluates the training and validation loss of the developed model to help identify areas for improvement before deploying it in a production environment.
 
 ## Data 
-The  raw information collected from users as  shown in the [review dataset](Data/review_data.csv)  is processed to extract the necessary columns for model building in this project, specifically `content` and `score`, which respectively represent the review text and the rating given by the user based on their review. The score contains values between 0-5, reflecting the sentiment expressed in the review.
+The  raw information collected from users as  shown in the [review dataset](Data/review_data.csv)  is processed to extract the necessary columns for model building in this project, specifically `content` and `score`, which respectively represent the review text and the rating given by the user based on their review. The `score` which is the target column in this project is a categorical variable that contains values between 0-5, reflecting the sentiment expressed in the review.
 
-##
+## Model pipeline 
 
+1. Preprocessing the dataset:
+- Clean the text data by removing stopwords and stemming text to ensure an appropriate format.
+- Resampling the target variable if an imbalanced data distribution is found.
+- Encode categorical data
+2. Model training
+Split the preprocessed dataset to training and testing sets.
+Build a GRU (Gated Recurrent Unit) model and train it using the training dataset.
+Model deployment via a REST API
+Develop a REST API using the Flask web framework to deploy the trained model.
+Host the REST API on a server.
+Deploy the Flask application as a production-ready server using Gunicorn.
+Interact with Flask-based REST API via POST request.
 
 
 
