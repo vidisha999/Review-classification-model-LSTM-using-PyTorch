@@ -25,12 +25,9 @@ The  raw information collected from users as  shown in the [review dataset](Data
 - Split the dataset to train, validation and test sets.
 - Convert dataset to Torch Datasets and initialize torch DataLoaders for batches of the dataset.
 4. Model building using PyTorch library.
-5. Model Training :
+5. Model Training & Evaluation:
   - Train the model on the training split for a predetermined number of epochs.
-  - calculate the training loss.
-6. Model evaluation :
-  - Calulate the validation loss.
-  - Compare the training loss and validation loss of the model.
+  - calculate and compare the training loss and validation loss of the model.
   - Evalute the model's performance accuracy using the validation split.
 
 ### Preprocessing the Dataset
@@ -59,10 +56,21 @@ The **LSTM** class of the  [LSTM-based neural network model](MLPipeline/LSTM.py)
 
 The **forward ()** method processes the input data through these layers, embedding the input tokens, passing them through the LSTM layers, applying dropout, and finally using a linear layer followed by softmax to produce the output probabilities for each class. The model is designed to handle padded sequences and outputs class probabilities for a 5-class classification problem by using softmax activation and 5 outputs in the output Linear layer.
 
-## Model Training
+## Model Training & Evaluation
 
+The [Training](MLPipeline/Training_validation.py) class uses two methods : **train_val()** and **evaluation()** to handle the training process over a specified number of epochs, utilizing a cross-entropy loss function which is apprpriate for multi-class classification and the Adam optimizer, followed by simaltaneously calculating the training loss and  validation loss during each epoch to asses the model's performance. 
 
+To begin the training phase, model is configured to train mode and initial average loss for each epoch was set to zero. Then it iterates through batches (batch_size=50) of training data, computes  the loss, performs backpropagation to calculate the gradient of the loss function, and updates the model parameters. The optimizer's gradient is set to zero at the beginning of each training iteration to ensure it doesn't retain any past gradient values from previous iterations.The average training loss is calculated at the end of each iteration and appended to the train_loss list. This list is then used for evaluating the model's performance over time, helping to track improvements and identify any potential issues during the training process.
 
+The evaluation method is responsible for evaluating the model's performance on validation data, calculating the average validation loss, storing predictions, and determining validation accuracy. The evaulation method begins by configuring the model to evaluation mode.
+
+Both methods include provisions for moving computations to a GPU for faster processing. The output results, including training and validation losses, accuracy, and elapsed time, are printed at the end of each epoch.
+
+![train-val-curve](Images/train_validation_loss.png)
+
+The above plot is obtained by tracking the training and validation loss for 10 epochs. 
+
+The training loss indicates how well the model is learning from the training data while validation loss evaluates the model's performance on unseen data which helps in assessing the model's ability to generalize to new data. A decreasing trends in both training and validation losses indicates the model is effectively learning the patterns in the training data and also generalizing well to new, unseen data.
 
 
 
