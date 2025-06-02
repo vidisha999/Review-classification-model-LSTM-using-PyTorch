@@ -17,7 +17,7 @@ The  raw information collected from users as  shown in the [review dataset](Data
 1. Preprocessing the dataset:
 - Clean the text data by removing stopwords and stemming text to ensure an appropriate format.
 - Resampling the target variable if an imbalanced data distribution is found.
-- Encode categorical data
+- Encode categorical labels to numerical values which is in the compatible format for machine learning algorithms.
 2. Model training
 Split the preprocessed dataset to training and testing sets.
 Build a GRU (Gated Recurrent Unit) model and train it using the training dataset.
