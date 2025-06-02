@@ -72,7 +72,8 @@ The above plot is obtained by tracking the training and validation loss for 10 e
 
 The training loss indicates how well the model is learning from the training data while validation loss evaluates the model's performance on unseen data which helps in assessing the model's ability to generalize to new data. A decreasing trends in both training and validation losses indicates the model is effectively learning the patterns in the training data and also generalizing well to new, unseen data.
 
-
+## Conclusion 
+This project successfully demonstrates the development of a review classification model using LSTM for sentiment analysis. By addressing the vanishing gradient problem inherent in traditional RNNs, the LSTM model effectively captures long-term dependencies in textual data. The automated pipeline built for this project ensures efficient preprocessing, training, and evaluation of the model using PyTorch, facilitating batch processing of large datasets. The evaluation of training and validation losses provides valuable insights into the model's performance, enabling continuous improvement before deployment. Overall, this project highlights the potential of LSTM-based models in enhancing sentiment analysis tasks and underscores the importance of robust model evaluation and validation processes.
 
 
 
