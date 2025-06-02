@@ -39,17 +39,15 @@ The [**clean_text(self,data)**](MLPipeline/Preprocessing.py) method of the **Pre
 
 Different variations of the same word would introduce noise to the model, thus they should be standardized to improve the model accuracy.Stemming is the process of simplifying the words to their base form by removing or replacing suffixes which is computationally morer efficient compared to lemmatization process which does the same function but involves more morphological analysis of the textual data. In this project for faster preprocessing of textual data stemming technique is implemented as the end goal is to build an automated pipeline to evaluate the model's performance accuracy.
 
-
-
-
-
-
+During exploratory data analysis it was found the data distribution of the categorical labels of the dataset's target variable `score` didn't show a uniform distribution. To avoid introducing a  bias during the model training due to this imbalanced dataset, it is resampled using the resample method of the sklearn.utils module.
+To wrap up the preprocessing phase,the categorical labels of `score` column was enconded to numerical values using the LabelEncoder method of the sklearn.preprocessing module.
 
 ### Tokenization 
 While deep learning model is built using pyTorch library for its flexible model-building capabilities,Tensorflow is utilized for word tokenization of the textual data.Tensorflow's static computation graphs optimize the tokenization process and including its other preprocessing tools for lammetization and stemming are designed highly scalable for large datasets.
+
 Machine learning algorithms expect textual data as a numerical input, to facillitate the model to extract features from text data and enable model to learn patterns and relationships between words. Assigning unique indices to words ensures consistent numerical representation throughout the dataset, enabling efficient storage and retrieval of text data, which is essential for handling large datasets.
 
-
+As shown in the [**generate_tokens(self,data)**](MLPipeline/Tokenization.py) method of the **Tokenization** class, the method returned the tokenized content tetxtual data of the preprocessed dataset and numerical index for each unique tokens. It has used **vocabular_size= 2000** as the maximum unique words from the vocabulary and **input_length =600** as the maximum length of the input text sequence.It ensures consistency in the input sequences by truncating longer sequences and padding shorter ones to match the specified **input_length** of the word sequences.
 
 
 
