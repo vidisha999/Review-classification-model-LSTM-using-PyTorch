@@ -18,19 +18,27 @@ The  raw information collected from users as  shown in the [review dataset](Data
 - Clean the text data by removing stopwords and stemming text to ensure an appropriate format.
 - Resampling the target variable if an imbalanced data distribution is found.
 - Encode categorical labels to numerical values which is in the compatible format for machine learning algorithms.
-2. Model training
-Split the preprocessed dataset to training and testing sets.
-Build a GRU (Gated Recurrent Unit) model and train it using the training dataset.
-Model deployment via a REST API
-Develop a REST API using the Flask web framework to deploy the trained model.
-Host the REST API on a server.
-Deploy the Flask application as a production-ready server using Gunicorn.
-Interact with Flask-based REST API via POST request.
+2. Tokenization
+  - Generate word tokens.
+  - Generate word index 
+
+
+### Tokenization 
+While deep learning model is built using pyTorch module due to its flexible model-building capabilities, the Tensorflow is utilized for word tokenization of the textual data as its static graphs optimize the tokenization process
 
 
 
+everage Best Tools: You can utilize TensorFlow’s robust tokenization tools and PyTorch’s flexible model-building capabilities, combining the strengths of both frameworks.
 
+Flexibility: PyTorch’s dynamic computation graphs make it easier to experiment and debug during model development, while TensorFlow’s static graphs optimize the tokenization process.
 
+Efficiency: TensorFlow’s efficient tokenization and preprocessing tools can handle large datasets effectively, and PyTorch’s intuitive API simplifies the model training process.
+
+Scalability: TensorFlow’s tokenization tools are designed to scale well, and PyTorch’s model-building capabilities can be easily adapted for various architectures and tasks.
+
+Community Support: Both TensorFlow and PyTorch have large, active communities, providing extensive resources, tutorials, and support for implementing this hybrid approach.
+
+Production Readiness: TensorFlow’s serving capabilities ensure that the tokenization process is optimized for production, while PyTorch’s TorchServe can efficiently deploy models.
 
 
 
