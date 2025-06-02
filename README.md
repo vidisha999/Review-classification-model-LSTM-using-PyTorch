@@ -49,7 +49,8 @@ Machine learning algorithms expect textual data as a numerical input, to facilli
 
 As shown in the [**generate_tokens(self,data)**](MLPipeline/Tokenization.py) method of the **Tokenization** class, the method returned the tokenized content tetxtual data of the preprocessed dataset and numerical index for each unique tokens. It has used **vocabular_size= 2000** as the maximum unique words from the vocabulary and **input_length =600** as the maximum length of the input text sequence.It ensures consistency in the input sequences by truncating longer sequences and padding shorter ones to match the specified **input_length** of the word sequences.
 
-
+### Create Dataset
+The **[Create](MLPipeline/Create.py)** class uses two methods: **create_dataset** and **data_loader**, to transform the tokenized data into a format that facilitates efficient loading and processing for model training.The **create_dataset(self,X,Y)** method splits the input data into training, validation, and test sets and returns each split when the tokenized X data and label-encoded Y data are provided. The **data_loader method converts these datasets into PyTorch tensors and creates TensorDataset objects for the training and validation sets. It then initializes DataLoader objects for both sets, with the training DataLoader shuffling the data to enhance generalization and avoid bias, and the validation DataLoader not shuffling the data to maintain consistency during epoch evaluations. This setup efficiently prepares and loads data for training and validating a PyTorch model.
 
 
 
