@@ -51,9 +51,21 @@ As shown in the [**generate_tokens(self,data)**](MLPipeline/Tokenization.py) met
 
 ### Create Dataset
 The **[Create](MLPipeline/Create.py)** class uses two methods: **create_dataset** and **data_loader**, to transform the tokenized data into a format that facilitates efficient loading and processing for model training.The **create_dataset(self,X,Y)** method splits the input data into training, validation, and test sets and returns each split when the tokenized X data and label-encoded Y data are provided.
+
 The **data_loader()** method converts these datasets into PyTorch tensors and creates TensorDataset objects for the training and validation sets.The torch tensors created from the X and Y sets of each split are in int64 format to preserve the original datatype of the dataset.Hence pyTorch enables using GPU to accelerate training and inference of the model, if the data needs to be moved to GPU, *cuda()* method from cuda toolkit should be used to move the torch tensors to GPU once torch tensors are created. **data_loader()** method then initializes DataLoader objects for both sets, with the training DataLoader shuffling the data to enhance generalization and avoid bias, and the validation DataLoader not shuffling the data to maintain consistency during epoch evaluations. This setup efficiently prepares and loads batch data for training and validating a PyTorch model.
 
-###
+### Model Building 
+The **LSTM** class of the  [LSTM-based neural network model](MLPipeline/LSTM.py)  provides a structured blueprint that outlines the model architecture, detailing the initialization of various layers and the sequence of data flow through these layers. The LSTM class inherits from **torch.nn.Module** and initializes with an embedding layer, two LSTM layers, a dropout layer, a linear layer, and a softmax activation function. **hidden_dim** variable is the number of units in a hidden layer. Its a dynamic variable which keeps changing its value during each layer in the LSTM architecture. Thus **hidden_dim** is stored as an instance variable, ensuring that its value is consistently accessible and can be referenced or modified as needed throughout the class.Other parameters like **vocab_size**, **embedding_dim** which is size of word's vector representation, and the dimensions for the linear layer are directly passed to the respective layers during initialization and are not stored as instance variables because they are typically used only once during the setup of those layers.
+
+The **forward ()** method processes the input data through these layers, embedding the input tokens, passing them through the LSTM layers, applying dropout, and finally using a linear layer followed by softmax to produce the output probabilities for each class. The model is designed to handle padded sequences and outputs class probabilities for a 5-class classification problem by using softmax activation and 5 outputs in the output Linear layer.
+
+
+
+
+
+
+
+
 
 
 
