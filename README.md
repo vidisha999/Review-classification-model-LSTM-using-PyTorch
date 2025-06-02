@@ -33,6 +33,17 @@ The  raw information collected from users as  shown in the [review dataset](Data
   - Compare the training loss and validation loss of the model.
   - Evalute the model's performance accuracy using the validation split.
 
+### Preprocessing the Dataset
+
+The [**clean_text(self,data)**](MLPipeline/Preprocessing.py) method of the **Preprocessing** class shows a sequence of steps utilized to clean the textual data. It has filtered the common words (which don't carry significant information helpful for sentiment analysis)  of the review text data using the stopwords downloaded from NLTK library's corpus. The filtered review text data were then stemmed using the NLTK's PorterStemmer method.
+
+Different variations of the same word would introduce noise to the model, thus they should be standardized to improve the model accuracy.Stemming is the process of simplifying the words to their base form by removing or replacing suffixes which is computationally morer efficient compared to lemmatization process which does the same function but involves more morphological analysis of the textual data. In this project for faster preprocessing of textual data stemming technique is implemented as the end goal is to build an automated pipeline to evaluate the model's performance accuracy.
+
+
+
+
+
+
 
 ### Tokenization 
 While deep learning model is built using pyTorch library for its flexible model-building capabilities,Tensorflow is utilized for word tokenization of the textual data.Tensorflow's static computation graphs optimize the tokenization process and including its other preprocessing tools for lammetization and stemming are designed highly scalable for large datasets.
