@@ -66,7 +66,7 @@ The evaluation method is responsible for evaluating the model's performance on v
 
 Both methods include provisions for moving computations to a GPU for faster processing. The output results, including training and validation losses, accuracy, and elapsed time, are printed at the end of each epoch.
 
-![train-val-curve](Images/train_validation_loss.png)
+![train-val-curve](Images/train_val_loss.png)
 
 The above plot is obtained by tracking the training and validation loss for 10 epochs. 
 
